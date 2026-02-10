@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+/* Fallback for Helvetica-like feel */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-zinc-950 text-white antialiased overflow-x-hidden;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #050505;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .font-helvetica-light {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+
+  .font-helvetica {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+
+  .font-helvetica-bold {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  ::selection {
+    @apply bg-yellow-600/30 text-yellow-300;
+  }
+
+  /* Custom Scrollbar - Liquid Gold */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 rounded-full hover:bg-zinc-700 transition-colors;
+  }
+
+  /* For dark mode scrollbar inside specific containers */
+  .dark-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #71717a, #52525b);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-[#0a0a0b]/90 backdrop-blur-xl border border-white/[0.05] shadow-2xl;
+  }
+
+  .text-gold {
+    color: #D4AF37;
+  }
+
+  .border-gold {
+    border-color: #D4AF37;
+  }
+
+  /* Gold Frame Button Primitive */
+  .btn-gold-frame {
+    @apply border border-[#D4AF37] bg-[#0a0a0b] text-[#D4AF37] transition-all duration-300;
+  }
+
+  .btn-gold-frame:hover {
+    @apply bg-[#D4AF37] text-black shadow-[0_0_20px_rgba(212, 175, 55, 0.4)];
+  }
+
+  .liquid-scroll {
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Global utility classes for animations that might not be in Tailwind keys */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+/* Luxury Radiant Animations */
+@keyframes radiant-pulse {
+  0% {
+    transform: scale(0.3);
+    opacity: 1;
+    border-width: 4px;
+  }
+
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes expand-x {
+  0% {
+    width: 0%;
+    left: 50%;
+    opacity: 0;
+  }
+
+  100% {
+    width: 100%;
+    left: 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes page-entrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.985);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sweep-light {
+  0% {
+    transform: translateX(-100%) skewX(-45deg);
+  }
+
+  100% {
+    transform: translateX(200%) skewX(-45deg);
+  }
+}
+
+.animate-radiant {
+  animation: radiant-pulse 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.animate-gold-flood {
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: gold-shimmer 1s infinite linear;
+}
+
+.animate-expand-x {
+  animation: expand-x 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-page-entrance {
+  animation: page-entrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
+}
+
+.light-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.05), transparent);
+  animation: sweep-light 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Premium Gradient Text Animation */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% auto;
+  animation: gradient-x 4s ease infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Slide In Animation */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.4s ease-out forwards;
+}
+
+/* Fade In Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Premium glass-solid for video frames */
+.glass-solid {
+  @apply bg-[#0a0a0b]/95 backdrop-blur-xl border border-white/[0.08];
+}
+
+/* Border gradient for premium cards */
+.border-gradient-gold {
+  position: relative;
+}
+
+.border-gradient-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent 50%, rgba(212, 175, 55, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Premium hover lift effect */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Mercury Liquid Glass - Deep Luxurious Effect */
+
+/* Primary mercury blob movement - slow organic flow */
+@keyframes mercury-flow-1 {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translate(15%, 10%) scale(1.1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(5%, 20%) scale(0.95);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-10%, 5%) scale(1.05);
+    opacity: 0.45;
+  }
+}
+
+@keyframes mercury-flow-2 {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.35;
+  }
+  33% {
+    transform: translate(-20%, 15%) scale(1.15);
+    opacity: 0.55;
+  }
+  66% {
+    transform: translate(10%, -10%) scale(0.9);
+    opacity: 0.4;
+  }
+}
+
+@keyframes mercury-flow-3 {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.3;
+  }
+  20% {
+    transform: translate(25%, -5%) scale(1.08);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translate(15%, 15%) scale(1.12);
+    opacity: 0.55;
+  }
+  60% {
+    transform: translate(-5%, 10%) scale(0.92);
+    opacity: 0.35;
+  }
+  80% {
+    transform: translate(-15%, -8%) scale(1.02);
+    opacity: 0.4;
+  }
+}
+
+/* Deep pulsing depth effect with liquid glow */
+@keyframes mercury-depth {
+  0%, 100% {
+    box-shadow:
+      inset 0 0 60px rgba(0, 0, 0, 0.4),
+      inset 0 0 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.05),
+      0 0 30px rgba(0, 0, 0, 0.4),
+      0 0 60px rgba(212, 175, 55, 0.05);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 50px rgba(0, 0, 0, 0.35),
+      inset 0 0 40px rgba(0, 0, 0, 0.25),
+      inset 0 1px 4px rgba(212, 175, 55, 0.08),
+      0 0 40px rgba(0, 0, 0, 0.35),
+      0 0 80px rgba(212, 175, 55, 0.08);
+  }
+}
+
+/* Slow surface light crawl */
+@keyframes mercury-sheen {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
+.liquid-glass-text {
+  position: relative;
+  display: inline-block;
+  padding: 0.7em 1.4em;
+  background: linear-gradient(
+    160deg,
+    rgba(8, 8, 10, 0.65) 0%,
+    rgba(3, 3, 5, 0.7) 40%,
+    rgba(6, 6, 8, 0.65) 100%
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top-color: rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  animation: mercury-depth 8s ease-in-out infinite;
+  overflow: hidden;
+  isolation: isolate;
+  will-change: box-shadow;
+  transform: translateZ(0);
+  contain: layout style paint;
+}
+
+/* Mercury blob layer 1 - large slow moving */
+.liquid-glass-text::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse 100% 80% at 30% 40%,
+    rgba(212, 175, 55, 0.12) 0%,
+    rgba(212, 175, 55, 0.06) 30%,
+    rgba(245, 215, 110, 0.03) 50%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  animation: mercury-flow-1 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Mercury blob layer 2 - medium counter-flow */
+.liquid-glass-text::after {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse 90% 70% at 70% 60%,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(212, 175, 55, 0.05) 40%,
+    transparent 65%
+  );
+  filter: blur(15px);
+  animation: mercury-flow-2 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Additional mercury layers via box-shadow on wrapper */
+.liquid-glass-text-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Third blob layer - uses a span inside h1 */
+.liquid-glass-text > .mercury-blob {
+  position: absolute;
+  inset: -25%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse 80% 90% at 50% 30%,
+    rgba(245, 215, 110, 0.1) 0%,
+    rgba(212, 175, 55, 0.04) 35%,
+    transparent 60%
+  );
+  filter: blur(25px);
+  animation: mercury-flow-3 14s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+  z-index: -1;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Surface sheen reflection - the slow light crawl */
+.liquid-glass-text > .mercury-sheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 20%,
+    rgba(212, 175, 55, 0.08) 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(212, 175, 55, 0.08) 60%,
+    rgba(255, 255, 255, 0.03) 80%,
+    transparent 100%
+  );
+  animation: mercury-sheen 8s cubic-bezier(0.25, 0, 0.25, 1) infinite;
+  pointer-events: none;
+  z-index: 10;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
